@@ -1,0 +1,6 @@
+# Optional: only needed for Stage 6 (`run_pipeline.py --train` / `--train-eval`).
+# Install torch first via https://pytorch.org/get-started/locally/ if you want
+# a CUDA build instead of the default CPU-only wheel. See INSTALL.md.
+torch>=2.0
+torch-geometric>=2.4
+scikit-learn

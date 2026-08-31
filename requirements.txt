@@ -1,0 +1,6 @@
+# Core dependencies for Stages 1-5 (synthesis, IFT scoring, label fusion, GNN export).
+# Yosys is a separate native-code dependency — see INSTALL.md, it is not pip-installable.
+numpy
+matplotlib
+seaborn
+pyverilog>=1.3.0

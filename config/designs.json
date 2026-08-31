@@ -1,0 +1,108 @@
+{
+  "_comment": "Override file — only add entries when the auto-detection heuristic in pipeline_config.py is wrong. Drop a new AES-T* folder into Test/ and run with no entry here.",
+
+  "AES-T2100": {
+    "trojan_type": "power_side_channel",
+    "keep_signals": ["SECRETKey", "LEAKBit", "INV", "COUNTER", "Tj_Trig"],
+    "ghost_tainted": [
+      "Trojan.LEAKBit",
+      "$flatten\\Trojan.$0\\LEAKBit[0:0]",
+      "Trojan.INV2_out", "Trojan.INV3_out", "Trojan.INV4_out",
+      "Trojan.INV5_out", "Trojan.INV6_out", "Trojan.INV7_out",
+      "Trojan.INV8_out", "Trojan.INV9_out", "Trojan.INV10_out",
+      "Trojan.INV11_out"
+    ]
+  },
+
+  "AES-T2300": {
+    "trojan_type": "combinational_trigger"
+  },
+
+  "AES-T2400": {
+    "trojan_type": "combinational_trigger"
+  },
+
+  "AES-T2500": {
+    "trojan_type": "sequential_counter_trigger"
+  },
+
+  "AES-T2600": {
+    "trojan_type": "sequential_counter_trigger"
+  },
+
+  "PIC16F84-T100": {
+    "trojan_type": "sequential_counter_trigger",
+    "trojan_patterns": ["Counter", "prog_adr_o"]
+  },
+  "PIC16F84-T200": {
+    "trojan_type": "sequential_counter_trigger",
+    "trojan_patterns": ["Counter", "Trojan_Trigger_Out"]
+  },
+  "PIC16F84-T300": {
+    "trojan_type": "sequential_counter_trigger",
+    "trojan_patterns": ["Counter", "Trojan_Trigger_Out"]
+  },
+  "PIC16F84-T400": {
+    "trojan_type": "sequential_counter_trigger",
+    "trojan_patterns": ["Counter", "Trojan_Trigger_Out"]
+  },
+
+  "_comment_sources": "Below: explicit `sources` overrides for designs whose auto-detected port-name heuristic (key|state|plaintext|secret) doesn't apply — mostly non-crypto peripherals/IP cores. See GUIDE.md 'No sources configured' entry. core_parameterized_johnson_counter_HT2, core_parameterized_onehot_counter_HT1, and core_true_random_generator_HT2 are deliberately omitted — they have no data input at all (control-only counters / a TRNG), so an all-zero taint result is expected, not a bug.",
+
+  "GH_sram22_gem":  { "sources": ["addr0", "din0"] },
+  "GH_sram2_chat":  { "sources": ["addr0", "din0"] },
+  "GH_sram32_lama": { "sources": ["addr0", "din0"] },
+  "GH_sram3_chat":  { "sources": ["addr0", "din0"] },
+
+  "GH_uart1_chat":  { "sources": ["uartrxd"] },
+  "GH_uart22_gem":  { "sources": ["uartrxd"] },
+  "GH_uart2_chat":  { "sources": ["uartrxd"] },
+  "GH_uart2_gem":   { "sources": ["uartrxd"] },
+
+  "core_BrentKung_HT1":   { "sources": ["a", "b"] },
+  "core_BrentKung_HT2":   { "sources": ["a", "b"] },
+  "core_CarryLook_HT2":   { "sources": ["a", "b"] },
+  "core_CarrySelect_HT3": { "sources": ["a", "b"] },
+  "core_CarrySkip_HT1":   { "sources": ["a", "b"] },
+  "core_CarrySkip_HT2":   { "sources": ["a", "b"] },
+  "core_CarrySkip_HT3":   { "sources": ["a", "b"] },
+  "core_CondSum_HT1":     { "sources": ["a", "b"] },
+  "core_configurable_mult_HT3": { "sources": ["a", "b"] },
+
+  "core_ConfMeshRout_HT2": { "sources": ["northdatai", "eastdatai", "southdatai", "westdatai", "localdatai"] },
+  "core_MeshRout_HT2":     { "sources": ["northindata", "eastindata", "southindata", "westindata", "localindata"] },
+
+  "core_ParamCam_HT2": { "sources": ["writedata", "comparedata"] },
+
+  "core_basic_spi_master_HT1": { "sources": ["txdata", "spimiso"] },
+  "core_basic_spi_master_HT2": { "sources": ["txdata", "spimiso"] },
+  "core_basic_spi_master_HT3": { "sources": ["txdata", "spimiso"] },
+
+  "core_parameterized_i2c_master_HT1": { "sources": ["datain"] },
+  "core_parameterized_i2c_master_HT2": { "sources": ["datain"] },
+  "core_parameterized_i2c_master_HT3": { "sources": ["datain"] },
+
+  "core_gray_counter_HT1":            { "sources": ["datain"] },
+  "core_gray_counter_HT3":            { "sources": ["datain"] },
+  "core_johnson_counter_HT1":         { "sources": ["loadval"] },
+  "core_loadable_updown_counter_HT1": { "sources": ["loadval"] },
+  "core_parameterized_loadable_counter_HT1": { "sources": ["datain"] },
+
+  "core_parameterized_serdes_HT2": { "sources": ["parallelin", "serialin"] },
+
+  "hw2vec_PIC16F84-T100": { "sources": ["ram_dat_i", "portb_i"] },
+  "hw2vec_PIC16F84-T200": { "sources": ["ram_dat_i", "portb_i"] },
+  "hw2vec_PIC16F84-T300": { "sources": ["ram_dat_i", "portb_i"] },
+  "hw2vec_PIC16F84-T400": { "sources": ["ram_dat_i", "portb_i"] },
+
+  "hw2vec_RS232-T100": { "sources": ["xmit_dataH"] },
+  "hw2vec_RS232-T200": { "sources": ["xmit_dataH"] },
+  "hw2vec_RS232-T300": { "sources": ["xmit_dataH"] },
+  "hw2vec_RS232-T400": { "sources": ["xmit_dataH"] },
+  "hw2vec_RS232-T500": { "sources": ["xmit_dataH"] },
+  "hw2vec_RS232-T600": { "sources": ["xmit_dataH"] },
+  "hw2vec_RS232-T700": { "sources": ["xmit_dataH"] },
+  "hw2vec_RS232-T800": { "sources": ["xmit_dataH"] },
+  "hw2vec_RS232-T900": { "sources": ["xmit_dataH"] },
+  "hw2vec_RS232-T901": { "sources": ["xmit_dataH"] }
+}

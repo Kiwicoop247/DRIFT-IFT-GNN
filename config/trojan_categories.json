@@ -1,0 +1,24 @@
+{
+  "_comment": "Controlled trojan-effect taxonomy for designs with no separate trojan module (NINA_DATA/FINAL-DATA corpus). Classifies the inline trojan-marker comment text (see _extract_inline_trojan_patterns in pipeline_config.py) into a category, then picks a category-appropriate taint-source fallback role instead of forcing the confidentiality key|state|plaintext|secret heuristic onto non-leakage designs. 'source_role' documents WHY that fallback signal set is the right IFT seed for this category, not just what it is.",
+
+  "leak_info": {
+    "keywords": ["leak", "leakage", "side.channel", "sidechannel", "exfil", "secret_storage", "covert"],
+    "source_role": "confidentiality source (key/state/secret) or, if absent, the trojan-region operand that stores/moves the leaked value"
+  },
+  "dos": {
+    "keywords": ["denial", "dos", "deadlock", "hang", "timeout", "bomb", "lockout", "suppress", "stall", "starvation"],
+    "source_role": "trigger-condition operand — the signal whose value gates the malicious stall/block behavior, extracted from `if (...)` conditions inside the trojan-marker window"
+  },
+  "corruption": {
+    "keywords": ["corrupt", "zeroing", "zero", "invert", "flip", "substitut", "sabotage", "annihilat", "reversal", "wipe", "modification"],
+    "source_role": "the legitimate data operand the trojan payload corrupts, extracted from assignment right-hand-sides inside the trojan-marker window"
+  },
+  "spoofing": {
+    "keywords": ["spoof", "hijack", "redirect", "impersonat"],
+    "source_role": "the legitimate control/status operand the trojan substitutes a forged value for, extracted the same way as corruption"
+  },
+  "other": {
+    "keywords": [],
+    "source_role": "no confident category-specific fallback — leave sources empty rather than guess; surfaced via taint_diagnostics.json for manual review"
+  }
+}
