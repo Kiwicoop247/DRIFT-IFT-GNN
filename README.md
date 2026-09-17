@@ -69,10 +69,6 @@ RTL Verilog
     └─ Stage 6: GNN export + optional training ──────  hw2vec/*.npy, stage6_train/
 ```
 
-Design rationale, the two-path split, and every non-obvious decision behind
-the scoring formulas are documented in
-[`docs/DESIGN_DECISIONS.md`](docs/DESIGN_DECISIONS.md).
-
 ## Quick start
 
 ```bash
@@ -124,7 +120,7 @@ stage5_export/        hw2vec GNN export
 stage6_train/         Optional: PyTorch Geometric node classifier (GraphSAGE/GCN)
 visualize/            Figure generation (comparison plots, GLRA bars, QtFlow bars)
 tools/                Standalone analysis scripts (weight-sensitivity ablation)
-docs/                 GUIDE.md (output reference) and DESIGN_DECISIONS.md (rationale log)
+docs/                 GUIDE.md (output reference)
 ```
 
 ## Requirements
@@ -134,11 +130,6 @@ docs/                 GUIDE.md (output reference) and DESIGN_DECISIONS.md (ratio
 - Python packages in `requirements.txt` (core) and `requirements-train.txt` (optional, Stage 6 GNN training)
 
 See [`INSTALL.md`](INSTALL.md) for platform-specific setup.
-
-## Contributing
-
-Contributions are welcome — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
-Please also read the [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
 
 ## License
 
